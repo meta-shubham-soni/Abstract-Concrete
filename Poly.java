@@ -5,19 +5,22 @@ import java.util.*;
 public class Poly {
 	private HashMap<Integer,Integer> polynomial = new HashMap<Integer,Integer>();
 	
-	
+	//constructor
 	Poly(HashMap<Integer,Integer> poly){
 		polynomial = poly;
 	}
 	
+	//helper function
 	HashMap<Integer,Integer> getPoly(){
 		return new HashMap<Integer,Integer>(polynomial);
 	}
 
+	//function send length of polynomial
 	public int getLen(){
 		return polynomial.size();
 	}
 	
+	//function to add a new element to polynomial
 	public void addElement(int pow,int coeff){
 		if(polynomial.containsKey(pow)){
 			System.out.print("this pow already exists");
@@ -26,6 +29,8 @@ public class Poly {
 		
 		polynomial.put(pow,coeff);
 	}
+	
+	//function to delete a element to polynomial
 	public void removeElement(int pow,int coeff){
 		if(!polynomial.containsKey(pow)){
 			System.out.print("this pow doesn't exists");
@@ -34,6 +39,12 @@ public class Poly {
 		
 		polynomial.remove(pow);
 	}
+	
+	/**
+	 * function to evalute the value of poly for num
+	 * @param num
+	 * @return 
+	 */
 	public float evaluate(float num){
 		float ans = 0;
 		
@@ -43,6 +54,7 @@ public class Poly {
 		return ans;
 	}
 	
+	//function find Degree of poly
 	public int getDegree(){
 		int degree = -1;
 		for(Map.Entry mapElement : polynomial.entrySet()){
@@ -55,7 +67,7 @@ public class Poly {
 	}
 	
 	
-	
+	//function to print Polynomial
 	public void printPoly(){
 		for(Map.Entry mapElement : polynomial.entrySet()){
 			System.out.print(mapElement.getValue()+"x^"+mapElement.getKey()+" ");
@@ -63,6 +75,7 @@ public class Poly {
 		System.out.println();
 	}
 	
+	//function to add two polynomials
 	public static Poly add(Poly p1,Poly p2){
 		HashMap<Integer,Integer> tempPolynomial = new HashMap<Integer,Integer>();
 		HashMap<Integer,Integer> P1 = p1.getPoly();
@@ -85,6 +98,7 @@ public class Poly {
 		return new Poly(tempPolynomial);
 	}
 	
+	//functions to multiply two polynomials
 	public static Poly multiply(Poly p1,Poly p2){
 		HashMap<Integer,Integer> ansPolynomial = new HashMap<Integer,Integer>();
 		HashMap<Integer,Integer> P1 = p1.getPoly();

@@ -19,6 +19,11 @@ public class IntSet {
         return arraySet;
     }
     
+    /**
+     * Check if set contain num
+     * @param num
+     * @return boolean
+     */
     public boolean isMember(int num){
         return binarySearch(arraySet,0,arraySet.length-1,num) != -1 ? true : false;
     }
@@ -27,6 +32,11 @@ public class IntSet {
         return arraySet.length;
     }
     
+    /**
+     * Check is subSet is Subset of this.set
+     * @param subSet
+     * @return
+     */
     public boolean isSubSet(IntSet subSet){
         int[] subSetArray = subSet.getArray();
         HashMap<Integer,Integer> occurenceCount = new HashMap<Integer,Integer>();
@@ -52,6 +62,10 @@ public class IntSet {
         return true;
     }
     
+    /**
+     * Function to return complement of this.set
+     * @return
+     */
     public int[] getComplement(){
         int lenOfComplement =  1000 - arraySet.length;
         int[] complementSet = new int[lenOfComplement];
@@ -78,6 +92,12 @@ public class IntSet {
         return complementSet;
     }
     
+    /**
+     * Function to return union of s1 & s2
+     * @param s1
+     * @param s2
+     * @return
+     */
     public int[] union(IntSet s1,IntSet s2){
         int[] arr1 = s1.getArray();
         int[] arr2 = s2.getArray();
@@ -98,6 +118,7 @@ public class IntSet {
     }
     
     
+    //helper function for binary searching
     int binarySearch(int arr[], int l, int r, int x) 
     { 
         if (r >= l) { 
